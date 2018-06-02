@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
 	public int Health = 200;
 	public int Damage = 100;
 	public int Range = 3;
-	public Bullet bulletPrefab;
+	public Bullet BulletPrefab;
 
 	// Use this for initialization
 	void Start ()
@@ -32,7 +32,7 @@ public class Tower : MonoBehaviour
 
 	private void Shoot(Enemy target)
 	{
-		Bullet bullet = Instantiate(bulletPrefab);
+		Bullet bullet = Instantiate(BulletPrefab);
 		bullet.target = target;
 		bullet.Damage = Damage;
 		bullet.transform.position = transform.position;
