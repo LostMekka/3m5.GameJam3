@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1881367142306166}
+  m_RootGameObject: {fileID: 1316929316492702}
   m_IsPrefabParent: 1
---- !u!1 &1881367142306166
+--- !u!1 &1316929316492702
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4062847326664526}
-  - component: {fileID: 114225725274702486}
-  - component: {fileID: 212797008775152036}
+  - component: {fileID: 4802474474907960}
+  - component: {fileID: 212037738708037212}
+  - component: {fileID: 114203633262772282}
   m_Layer: 0
-  m_Name: Tower
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4062847326664526
+--- !u!4 &4802474474907960
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881367142306166}
+  m_GameObject: {fileID: 1316929316492702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.079582006, y: 1.1139505, z: -0.04850395}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,28 +41,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114225725274702486
+--- !u!114 &114203633262772282
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881367142306166}
+  m_GameObject: {fileID: 1316929316492702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 831585e9714edda4ebc2ead5ebf56d3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b04c30e72d1d37448caba20343715ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 0
-  Health: 0
+  target: {fileID: 0}
+  speed: 0.5
   Damage: 100
-  Range: 0
-  bulletPrefab: {fileID: 0}
---- !u!212 &212797008775152036
+--- !u!212 &212037738708037212
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881367142306166}
+  m_GameObject: {fileID: 1316929316492702}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
