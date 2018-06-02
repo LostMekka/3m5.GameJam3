@@ -52,11 +52,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831585e9714edda4ebc2ead5ebf56d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 0
-  Health: 0
+  Cooldown: 1
+  Health: 100
   Damage: 100
-  Range: 0
-  bulletPrefab: {fileID: 0}
+  Range: 3
+  BulletPrefab: {fileID: 114203633262772282, guid: e1226289788689244a2f934b52eca2af,
+    type: 2}
 --- !u!212 &212797008775152036
 SpriteRenderer:
   m_ObjectHideFlags: 1

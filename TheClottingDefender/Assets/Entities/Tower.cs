@@ -6,11 +6,12 @@ public class Tower : MonoBehaviour
 {
 
 	public float Cooldown = 5f;
-	private float NextTimeFiring;
 	public int Health = 200;
 	public int Damage = 100;
 	public int Range = 3;
 	public Bullet BulletPrefab;
+	
+	private float NextTimeFiring;
 
 	// Use this for initialization
 	void Start ()
@@ -42,7 +43,7 @@ public class Tower : MonoBehaviour
 	private Enemy getNearestTarget()
 	{
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-		if (enemies.Length < 0)
+		if (enemies.Length > 0)
 		{
 			Enemy closest = null;
 			float distance = Mathf.Infinity;
