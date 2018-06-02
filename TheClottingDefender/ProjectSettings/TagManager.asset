@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - EnemyTag
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -41,4 +42,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 3378173609
+    locked: 0
+  - name: walls
+    uniqueID: 1565163051
+    locked: 0
+  - name: entities
+    uniqueID: 2620941627
+    locked: 0
+  - name: floating
+    uniqueID: 3768065509
+    locked: 0
+  - name: selection
+    uniqueID: 3510415741
+    locked: 0
+  - name: gui
+    uniqueID: 1541523275
     locked: 0

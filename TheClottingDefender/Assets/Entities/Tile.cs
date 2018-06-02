@@ -4,30 +4,37 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+	public Selection SelectionPrefab;
+	public Floor FloorPrefab;
+	public Tower TowerPrefab;
 
 	private SpriteRenderer SpriteRenderer;
-	public Floor FloorPrefab;
 	private Floor Floor;
-	public Tower TowerPrefab;
 	private Tower Tower;
+	private Selection SelectionBox;
 
 	// Use this for initialization
-	void Start () {
-		SpriteRenderer = GetComponent<SpriteRenderer>();
+	void Start()
+	{
+		SelectionBox = Instantiate(SelectionPrefab);
+		SelectionBox.transform.parent = transform;
+		SelectionBox.transform.localPosition = Vector3.zero;
+		SelectionBox.gameObject.SetActive(false);
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 	}
 
 	void OnMouseOver()
 	{
-		SpriteRenderer.enabled = true;
+		SelectionBox.gameObject.SetActive(true);
 	}
 
 	void OnMouseExit()
 	{
-		SpriteRenderer.enabled = false;
+		SelectionBox.gameObject.SetActive(false);
 	}
 
 	private void OnMouseDown()

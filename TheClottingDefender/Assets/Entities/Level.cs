@@ -16,7 +16,6 @@ namespace Entities
 		// Use this for initialization
 		private void Start()
 		{
-			Debug.Log(Environment.Version);
 			tiles = new List<Tile>(Width * Height);
 			for (int y = 0; y < Height; y++)
 			{
@@ -27,6 +26,7 @@ namespace Entities
 					tiles.Add(tile);
 				}
 			}
+
 			for (int x = 0; x < Width; x++)
 			{
 				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, -1);
@@ -36,7 +36,7 @@ namespace Entities
 
 		private void InitTile(GameObject tile, string objectName, int x, int y)
 		{
-			tile.transform.position = new Vector3(x - Width * 0.5f, y - Height * 0.5f);
+			tile.transform.localPosition = new Vector3(x - (Width - 1) * 0.5f, y - (Height - 1) * 0.5f);
 			tile.transform.parent = transform;
 			tile.name = string.Format("{2} at ({0}, {1})", x, y, objectName);
 		}
