@@ -24,7 +24,7 @@ namespace Entities
 					Tile tile = Instantiate(TilePrefab);
 					tile.transform.position = new Vector3(x - Width * 0.5f, y - Height * 0.5f);
 					tile.transform.parent = transform;
-					tile.name = string.Format("Tile at (${0}, ${1})", x, y);
+					tile.name = string.Format("Tile at ({0}, {1})", x, y);
 					tiles.Add(tile);
 				}
 			}
@@ -34,7 +34,7 @@ namespace Entities
 		{
 			if (x < 0 || x >= Width || y < 0 || y >= Height)
 			{
-				throw new IndexOutOfRangeException(string.Format("point (${0}, ${1}) is not in level tile set (width ${2}, height ${3})", x, y, Width, Height));
+				throw new IndexOutOfRangeException(string.Format("point ({0}, {1}) is not in level tile set (width {2}, height {3})", x, y, Width, Height));
 			}
 		}
 
