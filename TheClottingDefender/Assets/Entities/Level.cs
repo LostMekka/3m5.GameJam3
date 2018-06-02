@@ -67,6 +67,7 @@ namespace Entities
 			var e = Instantiate(EnemyPrefab);
 			e.transform.parent = transform;
 			e.transform.localPosition = new Vector2(-Width * 0.5f - 5, Random.value * (Height-1) - Height * 0.5f +0.5f);
+			e.GetComponent<Rigidbody2D>().AddTorque((Random.value - 0.5f) * 100);
 		}
 
 		// Update is called once per frame

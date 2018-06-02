@@ -165,7 +165,7 @@ Prefab:
     - target: {fileID: 114472707782778992, guid: ebfba294409d04e42abb96af28e1c643,
         type: 2}
       propertyPath: EnemyInterval
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebfba294409d04e42abb96af28e1c643, type: 2}
