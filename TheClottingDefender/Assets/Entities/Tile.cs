@@ -41,8 +41,10 @@ public class Tile : MonoBehaviour
 	{
 		if (!BuildFloor() && !BuildTower())
 		{
-			Destroy(Floor);
-			Destroy(Tower);
+			Destroy(Floor.gameObject);
+			Destroy(Tower.gameObject);
+			Floor = null;
+			Tower = null;
 		}
 		
 	}
