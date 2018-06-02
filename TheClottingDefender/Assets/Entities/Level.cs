@@ -16,7 +16,6 @@ namespace Entities
 		// Use this for initialization
 		private void Start()
 		{
-			Debug.Log(Environment.Version);
 			tiles = new List<Tile>(Width * Height);
 			for (int y = 0; y < Height; y++)
 			{
