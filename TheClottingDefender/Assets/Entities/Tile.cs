@@ -13,7 +13,7 @@ public class Tile : MonoBehaviour
 	{
 		SelectionBox = Instantiate(SelectionPrefab);
 		SelectionBox.transform.parent = transform;
-		SelectionBox.transform.position = Vector3.zero;
+		SelectionBox.transform.localPosition = Vector3.zero;
 		SelectionBox.gameObject.SetActive(false);
 	}
 
@@ -24,13 +24,11 @@ public class Tile : MonoBehaviour
 
 	void OnMouseOver()
 	{
-		Debug.Log("mouse hover");
 		SelectionBox.gameObject.SetActive(true);
 	}
 
 	void OnMouseExit()
 	{
-		Debug.Log("mouse exit");
 		SelectionBox.gameObject.SetActive(false);
 	}
 }
