@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 9c2bc0bc53d435441a93f8a6d3d48c5d
+guid: 97c0462dabcfeac46a695b1115b448f4
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Selektionsbox 0
+    21300000: Turmaufsatz 0
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Selektionsbox 0
+      name: Turmaufsatz 0
       rect:
         serializedVersion: 2
         x: 0
@@ -86,7 +86,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e75eabd862967345a3d5153cf666374
+      spriteID: a86d31133a0d7624ba83678ab44d3b50
       vertices: []
       indices: 
       edges: []
@@ -94,7 +94,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 685832a91f48dfd4db367180293944dd
+    spriteID: 0539de7a9f9427844b41efb413ddd019
     vertices: []
     indices: 
     edges: []

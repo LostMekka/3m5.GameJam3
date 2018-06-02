@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 9c2bc0bc53d435441a93f8a6d3d48c5d
+guid: 4ccf5c5a32b22954a8b9cfd3301d9ddc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Selektionsbox 0
+    21300000: Lebenspunkte 0
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Selektionsbox 0
+      name: Lebenspunkte 0
       rect:
         serializedVersion: 2
         x: 0
@@ -86,7 +86,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e75eabd862967345a3d5153cf666374
+      spriteID: 127f30955cee50943a813ecbdd0cf992
       vertices: []
       indices: 
       edges: []
@@ -94,7 +94,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 685832a91f48dfd4db367180293944dd
+    spriteID: fb7a885baaf8da84dae5e55d9500c9be
     vertices: []
     indices: 
     edges: []
