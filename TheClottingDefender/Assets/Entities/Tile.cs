@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+	public Selection SelectionPrefab;
 
-	private SpriteRenderer SpriteRenderer;
+	private Selection SelectionBox;
 
 	// Use this for initialization
-	void Start () {
-		SpriteRenderer = GetComponent<SpriteRenderer>();
+	void Start()
+	{
+		SelectionBox = Instantiate(SelectionPrefab);
+		SelectionBox.transform.parent = transform;
+		SelectionBox.transform.position = Vector3.zero;
+		SelectionBox.gameObject.SetActive(false);
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 	}
 
 	void OnMouseOver()
 	{
-		SpriteRenderer.enabled = true;
+		Debug.Log("mouse hover");
+		SelectionBox.gameObject.SetActive(true);
 	}
 
 	void OnMouseExit()
 	{
-		SpriteRenderer.enabled = false;
+		Debug.Log("mouse exit");
+		SelectionBox.gameObject.SetActive(false);
 	}
 }
