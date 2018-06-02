@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
 	public int Health = 200;
 	public int Damage = 100;
 	public int Range = 3;
+	public float BulletSpeed = 1.0f;
 	public Bullet BulletPrefab;
 	
 	private float NextTimeFiring;
@@ -34,8 +35,9 @@ public class Tower : MonoBehaviour
 	private void Shoot(Enemy target)
 	{
 		Bullet bullet = Instantiate(BulletPrefab);
-		bullet.target = target;
+		bullet.Target = target;
 		bullet.Damage = Damage;
+		bullet.Speed = BulletSpeed;
 		bullet.transform.position = transform.position;
 		NextTimeFiring = Time.time + Cooldown;
 	}
@@ -52,7 +54,7 @@ public class Tower : MonoBehaviour
 			{
 				Vector2 diff = (Vector2) go.transform.position - position;
 				float curDistance = diff.sqrMagnitude;
-				if (curDistance < distance)
+				if (curDistance < Range && curDistance < distance)
 				{
 					closest = go.GetComponent<Enemy>() ?? closest;
 					distance = curDistance;
