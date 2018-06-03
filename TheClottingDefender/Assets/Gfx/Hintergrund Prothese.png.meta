@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: dc9a38f8af67bf740adfed41ff95dfd4
+guid: 2568ff0bc96bc0c48a2f650eee518393
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Spore 0
+    21300000: Hintergrund Prothese 0
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spore 0
+      name: Hintergrund Prothese 0
       rect:
         serializedVersion: 2
         x: 0
@@ -86,7 +86,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f6e4d43d811c024ab709d0069a697d2
+      spriteID: 0d4983d042c0f1844866a22d44b4e1e3
       vertices: []
       indices: 
       edges: []
@@ -94,7 +94,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 639fdc85cd506924f952c2fa04363930
+    spriteID: 48e187031a3102f44b817a700825f8e5
     vertices: []
     indices: 
     edges: []

@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: dc9a38f8af67bf740adfed41ff95dfd4
+guid: 7c244a2e4caaafb4b8af2e04a375b950
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Spore 0
+    21300000: Menue 0
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -59,7 +59,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -72,13 +72,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spore 0
+      name: Menue 0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 16
+        y: 96
+        width: 280
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -86,7 +86,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f6e4d43d811c024ab709d0069a697d2
+      spriteID: f7d6133fa3ab23b4fad339cec1732184
       vertices: []
       indices: 
       edges: []
@@ -94,7 +94,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 639fdc85cd506924f952c2fa04363930
+    spriteID: b1809504a61388640a9607fcfbf27ce8
     vertices: []
     indices: 
     edges: []
