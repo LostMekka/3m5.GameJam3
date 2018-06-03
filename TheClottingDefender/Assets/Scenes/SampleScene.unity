@@ -152,21 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114472707782778992, guid: ebfba294409d04e42abb96af28e1c643,
-        type: 2}
-      propertyPath: Width
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114472707782778992, guid: ebfba294409d04e42abb96af28e1c643,
-        type: 2}
-      propertyPath: Height
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114472707782778992, guid: ebfba294409d04e42abb96af28e1c643,
-        type: 2}
-      propertyPath: EnemyInterval
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebfba294409d04e42abb96af28e1c643, type: 2}
   m_IsPrefabParent: 0

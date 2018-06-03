@@ -51,11 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5606d44d6c95792499db29e202821721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyInterval: 0.3
   EnemyPrefab: {fileID: 114497584811902290, guid: 307654e5158d87546bc5c4abfd2a3aa4,
     type: 2}
   TilePrefab: {fileID: 114622567205998898, guid: e7eb8beb0abce004e99c1d7d533c593c,
     type: 2}
   WallPrefab: {fileID: 114570568060026828, guid: 49b976e4a7e1e2a4c9e5cd5cb8e9e409,
     type: 2}
-  Width: 0
-  Height: 0
+  Width: 20
+  Height: 8
