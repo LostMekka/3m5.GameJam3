@@ -62,7 +62,7 @@ namespace Entities
 			return tiles[x + y * Width];
 		}
 
-		private void SpawnEnemy()
+		public void SpawnEnemy()
 		{
 			var e = Instantiate(EnemyPrefab);
 			e.transform.parent = transform;
