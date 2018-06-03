@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 97c0462dabcfeac46a695b1115b448f4
+guid: 9cbd53f3126f1804aa62c9d8213cff8c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Turmaufsatz 0
+    21300000: Pilzgeflecht 0
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Turmaufsatz 0
+      name: Pilzgeflecht 0
       rect:
         serializedVersion: 2
         x: 0
@@ -86,7 +86,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6dc32a439793174ba32730e1d3335d8
+      spriteID: e0a2a74d10eefc240afc45000d91ddb6
       vertices: []
       indices: 
       edges: []
@@ -94,7 +94,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0539de7a9f9427844b41efb413ddd019
+    spriteID: 47775f9e1508a8b4babbd6ea1f7462cc
     vertices: []
     indices: 
     edges: []

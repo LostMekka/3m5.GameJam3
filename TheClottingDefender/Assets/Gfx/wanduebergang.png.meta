@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 97c0462dabcfeac46a695b1115b448f4
+guid: cfcf8e4d00a4be94c82ad2f0e7907d0e
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Turmaufsatz 0
+    21300000: wanduebergang 0
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Turmaufsatz 0
+      name: wanduebergang 0
       rect:
         serializedVersion: 2
         x: 0
@@ -86,7 +86,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6dc32a439793174ba32730e1d3335d8
+      spriteID: b303547065f59a94a9807a36d65b7f4d
       vertices: []
       indices: 
       edges: []
@@ -94,7 +94,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0539de7a9f9427844b41efb413ddd019
+    spriteID: 7b1a82f2a9fcdf94890cf19edb2e6f14
     vertices: []
     indices: 
     edges: []
