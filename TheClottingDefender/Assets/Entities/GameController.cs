@@ -45,7 +45,6 @@ public class GameController : MonoBehaviour
 		level.GameController = this;
 		waveTimer = new RegularTimer(WaveInterval);
 		enemyTimer = new RegularTimer(EnemyInterval);
-		StartWave(Random.Range(MinWaveStrength, MaxWaveStrength));
 		GameStartAudio.Play();
 		Music.Play();
 		isGameOver = false;
