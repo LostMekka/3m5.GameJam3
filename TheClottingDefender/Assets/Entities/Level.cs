@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -62,12 +62,27 @@ namespace Entities
 			return tiles[x + y * Width];
 		}
 
-		public void SpawnEnemy()
+		public Tile GetTileForGlobalPosition(float x, float y)
 		{
-			var e = Instantiate(EnemyPrefab);
+			//TODO: make performant
+			foreach (Tile tile in tiles)
+			{
+				float tx = tile.transform.position.x;
+				float ty = tile.transform.position.y;
+				if (tx - 0.5f <= x && x <= tx + 0.5f && ty - 0.5f <= y && y <= ty + 0.5f) return tile;
+			}
+
+			return null;
+		}
+		
+		public Enemy SpawnEnemy()
+		{
+			Enemy e = Instantiate(EnemyPrefab);
 			e.transform.parent = transform;
-			e.transform.localPosition = new Vector2(-Width * 0.5f - 5, Random.value * (Height-1) - Height * 0.5f +0.5f);
+			e.transform.localPosition = new Vector2(-Width * 0.5f - 5, Random.value * (Height - 1) - Height * 0.5f + 0.5f);
 			e.GetComponent<Rigidbody2D>().AddTorque((Random.value - 0.5f) * 100);
+			e.ParentLevel = this;
+			return e;
 		}
 
 		// Update is called once per frame
