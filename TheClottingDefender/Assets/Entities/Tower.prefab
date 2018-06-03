@@ -52,13 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831585e9714edda4ebc2ead5ebf56d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 0.1
+  Cooldown: 0.8
   Health: 100
   Damage: 45
-  Range: 8
+  Range: 10
   BulletSpeed: 7
   BulletPrefab: {fileID: 114203633262772282, guid: e1226289788689244a2f934b52eca2af,
     type: 2}
+  ParentTile: {fileID: 0}
 --- !u!212 &212797008775152036
 SpriteRenderer:
   m_ObjectHideFlags: 1

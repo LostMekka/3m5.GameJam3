@@ -29,11 +29,14 @@ public class GameController : MonoBehaviour
 	public AudioSource EnemyHitAudio;
 	public AudioSource EnemyKilledAudio;
 
+	public AudioSource Music;
+
 	private Level level;
 	private RegularTimer waveTimer;
 	private RegularTimer enemyTimer;
 	private int enemiesToSpawn;
 	private UnityAction enemyDieAction;
+	private bool isGameOver = false;
 
 	// Use this for initialization
 	void Start()
@@ -44,6 +47,8 @@ public class GameController : MonoBehaviour
 		enemyTimer = new RegularTimer(EnemyInterval);
 		StartWave(Random.Range(MinWaveStrength, MaxWaveStrength));
 		GameStartAudio.Play();
+		Music.Play();
+		isGameOver = false;
 	}
 
 	// Update is called once per frame
@@ -57,6 +62,7 @@ public class GameController : MonoBehaviour
 			enemy.HitEvent.AddListener(EnemyHit);
 			enemiesToSpawn--;
 		}
+		if (!isGameOver && !Music.isPlaying) Music.Play();
 	}
 
 	private void StartWave(int waveStrength)
@@ -78,13 +84,14 @@ public class GameController : MonoBehaviour
 
 	public void OnEnemyPasses(Enemy enemy)
 	{
-		bool aliveBefore = Health > 0;
 		Health = Math.Max(0, Health - enemy.DamageOnPassing);
 		Destroy(enemy.gameObject);
-		if (Health <= 0 && aliveBefore)
+		if (Health <= 0 && !isGameOver)
 		{
 			GameOverCanvas.gameObject.SetActive(true);
 			GameOverAudio.Play();
+			Music.Stop();
+			isGameOver = true;
 		}
 	}
 }
