@@ -17,8 +17,9 @@ public class RegularTimer
 		get { return nextFire <= Time.time; }
 	}
 
-	public void Rewind()
+	public void Rewind(float? newInterval = null)
 	{
+		Interval = newInterval ?? Interval;
 		nextFire = Time.time + Interval;
 	}
 

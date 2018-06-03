@@ -1,15 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class MyEnemyEvent : UnityEvent<Enemy>
+{
+}
 
 public class Enemy : MonoBehaviour
 {
 	public int MaxHealth = 100;
 	public int RegenerationRate;
 	public float MaxMoveSpeed = 1f;
+	public int Bounty = 5;
+	public MyEnemyEvent dieEvent = new MyEnemyEvent();
 
 	private int currentHealth;
 	private Rigidbody2D body;
+
+
 
 	// Use this for initialization
 	void Start()
@@ -40,7 +51,9 @@ public class Enemy : MonoBehaviour
 		currentHealth -= dmg;
 		if (currentHealth <= 0)
 		{
+			dieEvent.Invoke(this);
 			Destroy(gameObject);
+			
 		}
 	}
 }
