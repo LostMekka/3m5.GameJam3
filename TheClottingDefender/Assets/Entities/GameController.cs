@@ -65,6 +65,5 @@ public class GameController : MonoBehaviour
 	private void EnemyDied(Enemy diedEnemy)
 	{
 		Money += diedEnemy.Bounty;
-		Debug.Log(Money);
 	}
 }
