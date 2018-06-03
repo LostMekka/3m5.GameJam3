@@ -14,6 +14,7 @@ namespace Entities
 		public Wall WallPrefab;
 		public int Width;
 		public int Height;
+		public int AdditionalWidth = 10;
 
 		private List<Tile> tiles;
 
@@ -23,18 +24,19 @@ namespace Entities
 			tiles = new List<Tile>(Width * Height);
 			for (var y = 0; y < Height; y++)
 			{
-				for (var x = 0; x < Width; x++)
+				for (int x = -AdditionalWidth; x < Width + AdditionalWidth; x++)
 				{
 					Tile tile = Instantiate(TilePrefab);
 					tile.X = x;
 					tile.Y = y;
+					tile.IsInteractable = x >= 0 && x < Width;
 					tile.IsBlockingChanged.AddListener(UpdateFlowField);
 					InitTile(tile.gameObject, "Tile", x, y);
 					tiles.Add(tile);
 				}
 			}
 
-			for (var x = 0; x < Width; x++)
+			for (int x = -AdditionalWidth; x < Width + AdditionalWidth; x++)
 			{
 				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, -1);
 				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, Height);

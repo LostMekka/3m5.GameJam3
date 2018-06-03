@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour
 	public Tower TowerPrefab;
 	public List<Tile> FlowFieldTargets;
 	public int? FlowFieldDistance;
+	public bool IsInteractable = true;
 
 	public int X;
 	public int Y;
@@ -50,6 +51,7 @@ public class Tile : MonoBehaviour
 
 	private void OnMouseOver()
 	{
+		if (!IsInteractable) return;
 		selectionBox.gameObject.SetActive(true);
 	}
 
@@ -60,6 +62,7 @@ public class Tile : MonoBehaviour
 
 	private void OnMouseDown()
 	{
+		if (!IsInteractable) return;
 		if (BuildFloor() || BuildTower()) return;
 		Destroy(floor.gameObject);
 		Destroy(tower.gameObject);
@@ -70,6 +73,7 @@ public class Tile : MonoBehaviour
 
 	private bool BuildFloor()
 	{
+		if (!IsInteractable) return false;
 		if (floor != null) return false;
 		floor = Instantiate(FloorPrefab);
 		floor.transform.position = transform.position;
@@ -80,6 +84,7 @@ public class Tile : MonoBehaviour
 
 	private bool BuildTower()
 	{
+		if (!IsInteractable) return false;
 		if (floor == null || tower != null) return false;
 		tower = Instantiate(TowerPrefab);
 		tower.transform.position = transform.position;
