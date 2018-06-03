@@ -7,7 +7,6 @@ namespace Entities
 {
 	public class Level : MonoBehaviour
 	{
-		public float EnemyInterval = 4f;
 		public Enemy EnemyPrefab;
 		public Tile TilePrefab;
 		public Wall WallPrefab;
@@ -15,7 +14,6 @@ namespace Entities
 		public int Height;
 
 		private List<Tile> tiles;
-		private RegularTimer enemyTimer;
 
 		// Use this for initialization
 		private void Start()
@@ -37,8 +35,6 @@ namespace Entities
 				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, Height);
 			}
 
-			enemyTimer = new RegularTimer(EnemyInterval);
-			SpawnEnemy();
 		}
 
 		private void InitTile(GameObject tile, string objectName, int x, int y)
@@ -88,7 +84,6 @@ namespace Entities
 		// Update is called once per frame
 		private void Update()
 		{
-			if (enemyTimer.CheckElapsedAndAutoRewind()) SpawnEnemy();
 		}
 	}
 }
