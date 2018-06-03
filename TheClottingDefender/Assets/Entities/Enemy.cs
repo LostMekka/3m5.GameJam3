@@ -1,5 +1,6 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using Entities;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -7,9 +8,12 @@ public class Enemy : MonoBehaviour
 	public int MaxHealth = 100;
 	public int RegenerationRate;
 	public float MaxMoveSpeed = 1f;
+	public Level ParentLevel;
 
 	private int currentHealth;
 	private Rigidbody2D body;
+	private Tile currentTile;
+	private Vector2 targetMoveDirection = Vector2.right;
 
 	// Use this for initialization
 	void Start()
