@@ -60,3 +60,10 @@ MonoBehaviour:
   Width: 26
   Height: 16
   AdditionalWidth: 10
+  BloodyWallSprite: {fileID: 21300000, guid: 7c3bae7fec479d145826143124e16952, type: 3}
+  ChangingWallSprite: {fileID: 21300000, guid: 7c3bae7fec479d145826143124e16952, type: 3}
+  SyntheticWallSprite: {fileID: 21300000, guid: 841254354ec907049ac6c483a47845c5,
+    type: 3}
+  BloodyBgSprite: {fileID: 21300000, guid: 3c58b49d0f38e4e42bcd5298abc425c8, type: 3}
+  ChangingBgSprite: {fileID: 21300000, guid: 2619cb3f49c3c9d489075a616f2fb875, type: 3}
+  SyntheticBgSprite: {fileID: 21300000, guid: 2568ff0bc96bc0c48a2f650eee518393, type: 3}

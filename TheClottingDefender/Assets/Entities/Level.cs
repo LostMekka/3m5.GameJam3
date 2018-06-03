@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,11 +15,21 @@ namespace Entities
 		public int Height;
 		public int AdditionalWidth = 10;
 
+		public Sprite BloodyWallSprite;
+		public Sprite ChangingWallSprite;
+		public Sprite SyntheticWallSprite;
+		public Sprite BloodyBgSprite;
+		public Sprite ChangingBgSprite;
+		public Sprite SyntheticBgSprite;
+
+		public bool DebugFlowField;
+
 		private List<Tile> tiles;
 
 		// Use this for initialization
 		private void Start()
 		{
+			int middle = Width / 2;
 			tiles = new List<Tile>(Width * Height);
 			for (var y = 0; y < Height; y++)
 			{
@@ -31,35 +40,40 @@ namespace Entities
 					tile.Y = y;
 					tile.IsInteractable = x >= 0 && x < Width;
 					tile.IsBlockingChanged.AddListener(UpdateFlowField);
-					InitTile(tile.gameObject, "Tile", x, y);
+					InitTile(tile.gameObject, "Tile", x, y, false);
 					tiles.Add(tile);
 				}
 			}
 
 			for (int x = -AdditionalWidth; x < Width + AdditionalWidth; x++)
 			{
-				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, -1);
-				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, Height);
+				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, -1, true);
+				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, Height, true);
 			}
 
 			UpdateFlowField();
 		}
 
-		private void InitTile(GameObject tile, string objectName, int x, int y)
+		private void InitTile(GameObject tile, string objectName, int x, int y, bool isWall)
 		{
 			tile.transform.localPosition = new Vector3(x - (Width - 1) * 0.5f, y - (Height - 1) * 0.5f);
 			tile.transform.parent = transform;
 			tile.name = string.Format("{2} at ({0}, {1})", x, y, objectName);
+			Sprite sprite = null;
+			if (x < Width / 2) sprite = isWall ? BloodyWallSprite : BloodyBgSprite;
+			if (x == Width / 2) sprite = isWall ? ChangingWallSprite : ChangingBgSprite;
+			if (x > Width / 2) sprite = isWall ? SyntheticWallSprite : SyntheticBgSprite;
+			tile.GetComponent<SpriteRenderer>().sprite = sprite;
 		}
 
 		private bool IsInRange(int x, int y)
 		{
-			return x >= 0 && x < Width && y >= 0 && y < Height;
+			return x >= -AdditionalWidth && x < Width + AdditionalWidth && y >= 0 && y < Height;
 		}
 
 		public Tile GetTileAt(int x, int y)
 		{
-			return IsInRange(x, y) ? tiles[x + y * Width] : null;
+			return IsInRange(x, y) ? tiles[x + AdditionalWidth + y * (Width + 2 * AdditionalWidth)] : null;
 		}
 
 		public Tile GetTileForGlobalPosition(float x, float y)
@@ -88,6 +102,16 @@ namespace Entities
 		// Update is called once per frame
 		private void Update()
 		{
+			if (DebugFlowField)
+			{
+				foreach (Tile tile in tiles)
+				{
+					foreach (Tile target in tile.FlowFieldTargets)
+					{
+						Debug.DrawLine(tile.transform.position, target.transform.position, Color.green);
+					}
+				}
+			}
 		}
 
 		private List<Tile> GetNeighbours(Tile tile)
@@ -123,7 +147,7 @@ namespace Entities
 			var toExpand = new List<Tile>();
 			for (var y = 0; y < Height; y++)
 			{
-				Tile t = GetTileAt(Width - 1, y);
+				Tile t = GetTileAt(Width + AdditionalWidth - 1, y);
 				if (t.IsBlocking) continue;
 				toExpand.Add(t);
 				t.FlowFieldDistance = 0;
@@ -137,6 +161,15 @@ namespace Entities
 				foreach (Tile neighbour in GetNeighbours(currTile))
 				{
 					if (neighbour.IsBlocking) continue;
+					int dx = neighbour.X - currTile.X;
+					int dy = neighbour.Y - currTile.Y;
+					if (dx != 0 && dy != 0)
+					{
+						Tile t1 = GetTileAt(currTile.X + dx, currTile.Y);
+						Tile t2 = GetTileAt(currTile.X, currTile.Y + dy);
+						if ((t1 == null || t1.IsBlocking) && (t2 == null || t2.IsBlocking)) continue;
+					}
+
 					if (neighbour.FlowFieldDistance != null)
 					{
 						if (neighbour.FlowFieldDistance < distanceToWrite) continue;
