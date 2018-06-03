@@ -145,7 +145,11 @@ MonoBehaviour:
   LevelPrefab: {fileID: 114472707782778992, guid: ebfba294409d04e42abb96af28e1c643,
     type: 2}
   WaveInterval: 20
-  EnemyInterval: 2
+  EnemyInterval: 0.15
+  MinWaveStrength: 10
+  MaxWaveStrength: 50
+  MinEnemiesPerSingleSpawn: 1
+  MaxEnemiesPerSingleSpawn: 15
 --- !u!4 &324467567
 Transform:
   m_ObjectHideFlags: 0
@@ -203,7 +207,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
