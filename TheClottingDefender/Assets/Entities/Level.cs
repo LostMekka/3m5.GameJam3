@@ -27,7 +27,7 @@ namespace Entities
 		public bool DebugFlowField;
 
 		private List<Tile> tiles;
-		private BoxCollider2D collider;
+		private BoxCollider2D levelEndCollider;
 
 		// Use this for initialization
 		private void Start()
@@ -43,6 +43,7 @@ namespace Entities
 					tile.Y = y;
 					tile.IsInteractable = x >= 0 && x < Width;
 					tile.IsBlockingChanged.AddListener(UpdateFlowField);
+					tile.ParentLevel = this;
 					InitTile(tile.gameObject, "Tile", x, y, false);
 					tiles.Add(tile);
 				}
@@ -56,11 +57,11 @@ namespace Entities
 
 			UpdateFlowField();
 
-			collider = gameObject.AddComponent<BoxCollider2D>();
-			collider.isTrigger = true;
+			levelEndCollider = gameObject.AddComponent<BoxCollider2D>();
+			levelEndCollider.isTrigger = true;
 			// ReSharper disable once PossibleLossOfFraction
-			collider.offset = new Vector2(Width / 2 + 3, 0);
-			collider.size = new Vector2(4, Height + 1);
+			levelEndCollider.offset = new Vector2(Width / 2 + 3, 0);
+			levelEndCollider.size = new Vector2(4, Height + 1);
 		}
 
 		private void OnTriggerEnter2D(Collider2D coll)

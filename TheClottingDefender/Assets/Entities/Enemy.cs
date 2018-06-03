@@ -18,7 +18,8 @@ public class Enemy : MonoBehaviour
 	public float AccelerationForce = 8f;
 	public Level ParentLevel;
 
-	public MyEnemyEvent dieEvent = new MyEnemyEvent();
+	public MyEnemyEvent DeathEvent = new MyEnemyEvent();
+	public MyEnemyEvent HitEvent = new MyEnemyEvent();
 
 	private int currentHealth;
 	private Rigidbody2D body;
@@ -89,8 +90,12 @@ public class Enemy : MonoBehaviour
 		currentHealth -= dmg;
 		if (currentHealth <= 0)
 		{
-			dieEvent.Invoke(this);
+			DeathEvent.Invoke(this);
 			Destroy(gameObject);
+		}
+		else
+		{
+			HitEvent.Invoke(this);
 		}
 	}
 }

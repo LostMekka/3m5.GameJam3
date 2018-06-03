@@ -11,20 +11,21 @@ public class Tower : MonoBehaviour
 	public int Range = 3;
 	public float BulletSpeed = 1.0f;
 	public Bullet BulletPrefab;
+	public Tile ParentTile;
 	
 	private float NextTimeFiring;
 
 	// Use this for initialization
-	void Start ()
+	private void Start ()
 	{
 		NextTimeFiring = Time.time;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
 		if (NextTimeFiring <= Time.time)
 		{
-			Enemy target = getNearestTarget();
+			Enemy target = GetNearestTarget();
 			if (target != null)
 			{
 				Shoot(target);
@@ -40,24 +41,25 @@ public class Tower : MonoBehaviour
 		bullet.Speed = BulletSpeed;
 		bullet.transform.position = transform.position;
 		NextTimeFiring = Time.time + Cooldown;
+		ParentTile.ParentLevel.GameController.TowerShootAudio.Play();
 	}
 
-	private Enemy getNearestTarget()
+	private Enemy GetNearestTarget()
 	{
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		if (enemies.Length > 0)
 		{
 			Enemy closest = null;
-			float SquareDistance = Mathf.Infinity;
+			float squareDistance = Mathf.Infinity;
 			Vector2 position = transform.position;
 			foreach (GameObject go in enemies)
 			{
 				Vector2 diff = (Vector2) go.transform.position - position;
 				float currSquareDistance = diff.sqrMagnitude;
-				if (currSquareDistance < Range*Range && currSquareDistance < SquareDistance)
+				if (currSquareDistance < Range*Range && currSquareDistance < squareDistance)
 				{
 					closest = go.GetComponent<Enemy>() ?? closest;
-					SquareDistance = currSquareDistance;
+					squareDistance = currSquareDistance;
 				}
 			}
 

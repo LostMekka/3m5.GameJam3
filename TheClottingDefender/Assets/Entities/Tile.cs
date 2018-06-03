@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Entities;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,8 @@ public class Tile : MonoBehaviour
 	public int? FlowFieldDistance;
 	public bool IsInteractable = true;
 
+	public Level ParentLevel;
+	
 	public int X;
 	public int Y;
 
@@ -69,6 +72,7 @@ public class Tile : MonoBehaviour
 		floor = null;
 		tower = null;
 		IsBlocking = false;
+		ParentLevel.GameController.TowerDestroyedAudio.Play();
 	}
 
 	private bool BuildFloor()
@@ -79,6 +83,7 @@ public class Tile : MonoBehaviour
 		floor.transform.position = transform.position;
 		floor.transform.parent = transform;
 		IsBlocking = true;
+		ParentLevel.GameController.TowerBuiltAudio.Play();
 		return true;
 	}
 
@@ -87,8 +92,10 @@ public class Tile : MonoBehaviour
 		if (!IsInteractable) return false;
 		if (floor == null || tower != null) return false;
 		tower = Instantiate(TowerPrefab);
+		tower.ParentTile = this;
 		tower.transform.position = transform.position;
 		tower.transform.parent = transform;
+		ParentLevel.GameController.TowerBuiltAudio.Play();
 		return true;
 	}
 }
