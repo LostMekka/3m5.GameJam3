@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 	private Level level;
 	private RegularTimer waveTimer;
 	private RegularTimer enemyTimer;
-	private int EnemiesToSpawn = 0;
+	private int EnemiesToSpawn;
 	private UnityAction enemyDieAction; 
 
 	// Use this for initialization
@@ -43,8 +43,6 @@ public class GameController : MonoBehaviour
 			enemy.dieEvent.AddListener(EnemyDied);
 			EnemiesToSpawn--;
 		}
-		
-		
 	}
 
 	private void StartWave(int waveStrength)
