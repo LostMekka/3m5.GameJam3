@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7ab0bc998d6d4478d296bf6f138416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  Health: 100
   Money: 500
   LevelPrefab: {fileID: 114472707782778992, guid: ebfba294409d04e42abb96af28e1c643,
     type: 2}
@@ -264,8 +264,7 @@ MonoBehaviour:
   EnemyInterval: 0.15
   MinWaveStrength: 10
   MaxWaveStrength: 50
-  MinEnemiesPerSingleSpawn: 1
-  MaxEnemiesPerSingleSpawn: 15
+  GameOverCanvas: {fileID: 2079334755}
 --- !u!4 &324467567
 Transform:
   m_ObjectHideFlags: 0
@@ -617,12 +616,12 @@ GameObject:
   - component: {fileID: 2079334754}
   - component: {fileID: 2079334753}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GameOverCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2079334753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +665,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2079334752}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
