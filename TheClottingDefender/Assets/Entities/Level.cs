@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,11 +15,19 @@ namespace Entities
 		public int Height;
 		public int AdditionalWidth = 10;
 
+		public Sprite BloodyWallSprite;
+		public Sprite ChangingWallSprite;
+		public Sprite SyntheticWallSprite;
+		public Sprite BloodyBgSprite;
+		public Sprite ChangingBgSprite;
+		public Sprite SyntheticBgSprite;
+
 		private List<Tile> tiles;
 
 		// Use this for initialization
 		private void Start()
 		{
+			int middle = Width / 2;
 			tiles = new List<Tile>(Width * Height);
 			for (var y = 0; y < Height; y++)
 			{
@@ -31,25 +38,30 @@ namespace Entities
 					tile.Y = y;
 					tile.IsInteractable = x >= 0 && x < Width;
 					tile.IsBlockingChanged.AddListener(UpdateFlowField);
-					InitTile(tile.gameObject, "Tile", x, y);
+					InitTile(tile.gameObject, "Tile", x, y, false);
 					tiles.Add(tile);
 				}
 			}
 
 			for (int x = -AdditionalWidth; x < Width + AdditionalWidth; x++)
 			{
-				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, -1);
-				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, Height);
+				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, -1, true);
+				InitTile(Instantiate(WallPrefab).gameObject, "Wall", x, Height, true);
 			}
 
 			UpdateFlowField();
 		}
 
-		private void InitTile(GameObject tile, string objectName, int x, int y)
+		private void InitTile(GameObject tile, string objectName, int x, int y, bool isWall)
 		{
 			tile.transform.localPosition = new Vector3(x - (Width - 1) * 0.5f, y - (Height - 1) * 0.5f);
 			tile.transform.parent = transform;
 			tile.name = string.Format("{2} at ({0}, {1})", x, y, objectName);
+			Sprite sprite = null;
+			if (x < Width/ 2) sprite = isWall ? BloodyWallSprite : BloodyBgSprite;
+			if (x == Width/ 2) sprite = isWall ? ChangingWallSprite : ChangingBgSprite;
+			if (x > Width/ 2) sprite = isWall ? SyntheticWallSprite : SyntheticBgSprite;
+			tile.GetComponent<SpriteRenderer>().sprite = sprite;
 		}
 
 		private bool IsInRange(int x, int y)

@@ -84,6 +84,18 @@ MonoBehaviour:
     type: 2}
   TowerPrefab: {fileID: 114225725274702486, guid: 4121a57028851bd4382c518262d63c45,
     type: 2}
+  FlowFieldTargets: []
+  IsInteractable: 1
+  BloodySprite: {fileID: 21300000, guid: 3c58b49d0f38e4e42bcd5298abc425c8, type: 3}
+  ChangingSprite: {fileID: 21300000, guid: 2619cb3f49c3c9d489075a616f2fb875, type: 3}
+  SyntheticSprite: {fileID: 21300000, guid: 2568ff0bc96bc0c48a2f650eee518393, type: 3}
+  X: 0
+  Y: 0
+  IsBlockingChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212975822374612314
 SpriteRenderer:
   m_ObjectHideFlags: 1
