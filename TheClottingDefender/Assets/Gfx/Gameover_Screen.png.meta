@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: dc9a38f8af67bf740adfed41ff95dfd4
+guid: 112cdcbb28735ae48ad75c3d6f3bbb77
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Spore 0
+    21300000: Gameover_Screen 0
+    21300002: Gameover_Screen 1
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -59,7 +60,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -72,13 +73,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spore 0
+      name: Gameover_Screen 0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 16
+        y: 352
+        width: 280
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -86,7 +87,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f6e4d43d811c024ab709d0069a697d2
+      spriteID: 81325b900bd5d5e4a95cf9d6dd4725af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gameover_Screen 1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 280
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87c3f81ca47a3b94b98ae584ab27ec99
       vertices: []
       indices: 
       edges: []
@@ -94,7 +115,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 639fdc85cd506924f952c2fa04363930
+    spriteID: 49afd8fa0a17a074393da48165da63c1
     vertices: []
     indices: 
     edges: []

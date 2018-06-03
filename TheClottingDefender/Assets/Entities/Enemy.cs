@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
 		if (body.velocity.sqrMagnitude < MaxMoveSpeed * MaxMoveSpeed - 0.1f) body.AddForce(body.velocity * AccelerationForce);
 	}
 
-	private Vector2 Normalize(Vector2 vec)
+	private static Vector2 Normalize(Vector2 vec)
 	{
 		return vec.Equals(Vector2.zero)
 			? Vector2.zero
