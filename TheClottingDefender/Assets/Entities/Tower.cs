@@ -48,16 +48,16 @@ public class Tower : MonoBehaviour
 		if (enemies.Length > 0)
 		{
 			Enemy closest = null;
-			float distance = Mathf.Infinity;
+			float SquareDistance = Mathf.Infinity;
 			Vector2 position = transform.position;
 			foreach (GameObject go in enemies)
 			{
 				Vector2 diff = (Vector2) go.transform.position - position;
-				float curDistance = diff.sqrMagnitude;
-				if (curDistance < Range && curDistance < distance)
+				float currSquareDistance = diff.sqrMagnitude;
+				if (currSquareDistance < Range*Range && currSquareDistance < SquareDistance)
 				{
 					closest = go.GetComponent<Enemy>() ?? closest;
-					distance = curDistance;
+					SquareDistance = currSquareDistance;
 				}
 			}
 

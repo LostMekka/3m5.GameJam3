@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4062847326664526}
   - component: {fileID: 114225725274702486}
   - component: {fileID: 212797008775152036}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,10 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831585e9714edda4ebc2ead5ebf56d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 1
+  Cooldown: 0.1
   Health: 100
-  Damage: 100
-  Range: 3
+  Damage: 45
+  Range: 8
+  BulletSpeed: 7
   BulletPrefab: {fileID: 114203633262772282, guid: e1226289788689244a2f934b52eca2af,
     type: 2}
 --- !u!212 &212797008775152036
