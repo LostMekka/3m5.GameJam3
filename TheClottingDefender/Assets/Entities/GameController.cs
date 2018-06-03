@@ -1,42 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Entities;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
-
-	public int MaxHealth = 100;
+	public int Health = 100;
 	public int Money = 500;
 	public Level LevelPrefab;
 	public float WaveInterval = 4f;
 	public float EnemyInterval = 0.1f;
 	public int MinWaveStrength = 20;
 	public int MaxWaveStrength = 50;
-	public int MinEnemiesPerSingleSpawn = 1;
-	public int MaxEnemiesPerSingleSpawn = 15;
+
+	public Canvas GameOverCanvas;
 
 	private Level level;
 	private RegularTimer waveTimer;
 	private RegularTimer enemyTimer;
 	private int EnemiesToSpawn;
 	private UnityAction enemyDieAction;
-	private Canvas gameOverCanvas;
 
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
 		level = Instantiate(LevelPrefab);
+		level.GameController = this;
 		waveTimer = new RegularTimer(WaveInterval);
-		enemyTimer= new RegularTimer(EnemyInterval);
-		gameOverCanvas = GetComponent<Canvas>();
+		enemyTimer = new RegularTimer(EnemyInterval);
 		StartWave(Random.Range(MinWaveStrength, MaxWaveStrength));
 	}
-	
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
 		if (waveTimer.CheckElapsedAndAutoRewind()) StartWave(Random.Range(MinWaveStrength, MaxWaveStrength));
 		if (EnemiesToSpawn > 0 && enemyTimer.CheckElapsedAndAutoRewind())
@@ -52,18 +52,15 @@ public class GameController : MonoBehaviour
 		EnemiesToSpawn += waveStrength;
 	}
 
-	private void SpawnEnemies(int enemyCount)
-	{
-		enemyCount = EnemiesToSpawn < enemyCount ? EnemiesToSpawn : enemyCount;
-		for (int i = 0; i < enemyCount; i++)
-		{
-			level.SpawnEnemy();
-			EnemiesToSpawn--;
-		}
-	}
-
 	private void EnemyDied(Enemy diedEnemy)
 	{
 		Money += diedEnemy.Bounty;
+	}
+
+	public void OnEnemyPasses(Enemy enemy)
+	{
+		Health = Math.Max(0, Health - enemy.DamageOnPassing);
+		Destroy(enemy.gameObject);
+		if (Health == 0) GameOverCanvas.gameObject.SetActive(true);
 	}
 }

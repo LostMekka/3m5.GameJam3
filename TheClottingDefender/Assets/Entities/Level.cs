@@ -22,9 +22,12 @@ namespace Entities
 		public Sprite ChangingBgSprite;
 		public Sprite SyntheticBgSprite;
 
+		public GameController GameController;
+
 		public bool DebugFlowField;
 
 		private List<Tile> tiles;
+		private BoxCollider2D collider;
 
 		// Use this for initialization
 		private void Start()
@@ -52,6 +55,19 @@ namespace Entities
 			}
 
 			UpdateFlowField();
+
+			collider = gameObject.AddComponent<BoxCollider2D>();
+			collider.isTrigger = true;
+			// ReSharper disable once PossibleLossOfFraction
+			collider.offset = new Vector2(Width / 2 + 3, 0);
+			collider.size = new Vector2(4, Height + 1);
+		}
+
+		private void OnTriggerEnter2D(Collider2D coll)
+		{
+			if (!coll.gameObject.CompareTag("Enemy")) return;
+			var e = coll.gameObject.GetComponent<Enemy>();
+			if (e != null) GameController.OnEnemyPasses(e);
 		}
 
 		private void InitTile(GameObject tile, string objectName, int x, int y, bool isWall)

@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 {
 	public int MaxHealth = 100;
 	public int Bounty = 5;
+	public int DamageOnPassing = 10;
 	public int RegenerationRate;
 	public float MaxMoveSpeed = 2f;
 	public float SteeringForce = 10f;
