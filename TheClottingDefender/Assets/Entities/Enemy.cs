@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Entities;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,9 +17,12 @@ public class Enemy : MonoBehaviour
 	public float MaxMoveSpeed = 1f;
 	public int Bounty = 5;
 	public MyEnemyEvent dieEvent = new MyEnemyEvent();
+	public Level ParentLevel;
 
 	private int currentHealth;
 	private Rigidbody2D body;
+	private Tile currentTile;
+	private Vector2 targetMoveDirection = Vector2.right;
 
 
 
