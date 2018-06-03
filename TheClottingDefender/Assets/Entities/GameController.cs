@@ -22,7 +22,8 @@ public class GameController : MonoBehaviour
 	private RegularTimer waveTimer;
 	private RegularTimer enemyTimer;
 	private int EnemiesToSpawn;
-	private UnityAction enemyDieAction; 
+	private UnityAction enemyDieAction;
+	private Canvas gameOverCanvas;
 
 	// Use this for initialization
 	void Start ()
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour
 		level = Instantiate(LevelPrefab);
 		waveTimer = new RegularTimer(WaveInterval);
 		enemyTimer= new RegularTimer(EnemyInterval);
+		gameOverCanvas = GetComponent<Canvas>();
 		StartWave(Random.Range(MinWaveStrength, MaxWaveStrength));
 	}
 	
