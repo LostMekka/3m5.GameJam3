@@ -1,71 +1,89 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Tile : MonoBehaviour
 {
 	public Selection SelectionPrefab;
 	public Floor FloorPrefab;
 	public Tower TowerPrefab;
+	public List<Tile> FlowFieldTargets;
+	public int? FlowFieldDistance;
 
-	private SpriteRenderer SpriteRenderer;
-	private Floor Floor;
-	private Tower Tower;
-	private Selection SelectionBox;
+	public int X;
+	public int Y;
+
+	public UnityEvent IsBlockingChanged = new UnityEvent();
+
+	private SpriteRenderer spriteRenderer;
+	private Floor floor;
+	private Tower tower;
+	private Selection selectionBox;
+
+	public bool IsBlocking
+	{
+		get { return isBlockingInternalField; }
+		private set
+		{
+			bool changed = isBlockingInternalField != value;
+			isBlockingInternalField = value;
+			if (changed) IsBlockingChanged.Invoke();
+		}
+	}
+
+	private bool isBlockingInternalField;
 
 	// Use this for initialization
-	void Start()
+	private void Start()
 	{
-		SelectionBox = Instantiate(SelectionPrefab);
-		SelectionBox.transform.parent = transform;
-		SelectionBox.transform.localPosition = Vector3.zero;
-		SelectionBox.gameObject.SetActive(false);
+		selectionBox = Instantiate(SelectionPrefab);
+		selectionBox.transform.parent = transform;
+		selectionBox.transform.localPosition = Vector3.zero;
+		selectionBox.gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame
-	void Update()
+	private void Update()
 	{
 	}
 
-	void OnMouseOver()
+	private void OnMouseOver()
 	{
-		SelectionBox.gameObject.SetActive(true);
+		selectionBox.gameObject.SetActive(true);
 	}
 
-	void OnMouseExit()
+	private void OnMouseExit()
 	{
-		SelectionBox.gameObject.SetActive(false);
+		selectionBox.gameObject.SetActive(false);
 	}
 
 	private void OnMouseDown()
 	{
-		if (!BuildFloor() && !BuildTower())
-		{
-			Destroy(Floor.gameObject);
-			Destroy(Tower.gameObject);
-			Floor = null;
-			Tower = null;
-		}
-		
+		if (BuildFloor() || BuildTower()) return;
+		Destroy(floor.gameObject);
+		Destroy(tower.gameObject);
+		floor = null;
+		tower = null;
+		IsBlocking = false;
 	}
 
-	bool BuildFloor()
+	private bool BuildFloor()
 	{
-		if (Floor != null) return false;
-		Floor = Instantiate(FloorPrefab);
-		Floor.transform.position = transform.position;
-		Floor.transform.parent = transform;
+		if (floor != null) return false;
+		floor = Instantiate(FloorPrefab);
+		floor.transform.position = transform.position;
+		floor.transform.parent = transform;
+		IsBlocking = true;
 		return true;
-
-		
 	}
 
-	bool BuildTower()
+	private bool BuildTower()
 	{
-		if (Floor == null || Tower != null) return false;
-		Tower = Instantiate(TowerPrefab);
-		Tower.transform.position = transform.position;
-		Tower.transform.parent = transform;
+		if (floor == null || tower != null) return false;
+		tower = Instantiate(TowerPrefab);
+		tower.transform.position = transform.position;
+		tower.transform.parent = transform;
 		return true;
 	}
 }
